@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="black">#FF000000</color>
+    <color name="white">#FFFFFFFF</color>
+    <color name="green">#61E267</color>
+    <color name="red">#E6493D</color>
+    <color name="primary_color">#4CAF50</color>
+    <color name="primary_variant">#4CAF50</color>
+    <color name="light_gray">#F5F5F5</color>
+    <color name="homeback">#DDE8F2</color>
+    <color name="yellow">#FFfc00</color>
+    <color name="grey_font">#ff9e9e9e</color>
+    <color name="textcolor">#212121</color>
+    <color name="home">#FFF8E1</color>
+    <color name="gray_type">#777777</color>
+    <color name="halka_gray">#BDBDBD</color>
+    <color name="border_color">#FF9800</color>
+    <color name="call_received">#4CAF50</color>
+    <color name="call_dialed">#2196F3</color>
+    <color name="call_missed">#F44336</color>
+    <color name="call_rejected">#9E9E9E</color>
+</resources>
