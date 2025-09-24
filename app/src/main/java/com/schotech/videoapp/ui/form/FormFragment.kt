@@ -39,8 +39,8 @@ class FormFragment : Fragment() {
 
         binding.btnNext.setOnClickListener {
             val name = binding.etName.text.toString().trim()
-            val age = binding.etAge.text.toString().trim()
-            val insertTime = binding.etInsertTime.text.toString().trim().toFloatOrNull() ?: 0f
+            val age = "2"
+            val insertTime = age.toFloatOrNull() ?: 0f
             if (name.isNotEmpty() && age.isNotEmpty()) {
                 userViewModel.setUserData(name, age, insertTime)
                 if (checkStoragePermissions()) {
