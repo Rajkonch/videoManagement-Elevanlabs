@@ -38,7 +38,11 @@ class FormFragment : Fragment() {
         binding = FragmentFormBinding.inflate(inflater, container, false)
 
         binding.btnNext.setOnClickListener {
-            val name = binding.etName.text.toString().trim()
+            val nameInput = binding.etName.text.toString().trim()
+            val name = nameInput.split(" ")
+                .joinToString(" ") { word ->
+                    word.replaceFirstChar { if (it.isLowerCase()) it.titlecase() else it.toString() }
+                }
             val age = "2"
             val insertTime = age.toFloatOrNull() ?: 0f
             if (name.isNotEmpty() && age.isNotEmpty()) {
