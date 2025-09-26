@@ -11,6 +11,7 @@
         <action
             android:id="@+id/action_form_to_video"
             app:destination="@id/videoFragment" />
+
     </fragment>
 
     <fragment

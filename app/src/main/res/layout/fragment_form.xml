@@ -1,10 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:padding="@dimen/_10sdp"
-    android:background="#FFF3E0">
+    android:background="#FFF3E0"
+    android:padding="@dimen/_10sdp">
 
     <!-- Gradient Background Card -->
     <RelativeLayout
@@ -12,26 +11,26 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_centerInParent="true"
+        android:layout_margin="16dp"
         android:background="@drawable/gradient_background"
         android:elevation="@dimen/_6sdp"
-        android:padding="@dimen/_12sdp"
-        android:layout_margin="16dp">
+        android:padding="@dimen/_12sdp">
 
         <!-- Title Text -->
         <TextView
             android:id="@+id/tv_title"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Edit Your Name in Video"
-            android:textSize="@dimen/_20sdp"
-            android:textStyle="bold"
-            android:textColor="#FF5722"
             android:layout_centerHorizontal="true"
             android:fontFamily="sans-serif-medium"
             android:shadowColor="#80000000"
             android:shadowDx="2"
             android:shadowDy="2"
-            android:shadowRadius="4" />
+            android:shadowRadius="4"
+            android:text="Edit Your Name in Video"
+            android:textColor="#FF5722"
+            android:textSize="@dimen/_20sdp"
+            android:textStyle="bold" />
 
         <!-- EditText for Name Input -->
         <EditText
@@ -40,14 +39,14 @@
             android:layout_height="56dp"
             android:layout_below="@id/tv_title"
             android:layout_marginTop="24dp"
-            android:maxLength="17"
+            android:background="@drawable/edit_text_background"
+            android:fontFamily="sans-serif"
             android:hint="Enter Your Name"
             android:inputType="textPersonName"
-            android:background="@drawable/edit_text_background"
+            android:maxLength="17"
             android:padding="12dp"
             android:textColor="#212121"
             android:textColorHint="#757575"
-            android:fontFamily="sans-serif"
             android:textSize="16sp" />
 
         <!-- Next Button -->
@@ -57,14 +56,28 @@
             android:layout_height="56dp"
             android:layout_below="@id/etName"
             android:layout_marginTop="16dp"
-            android:text="Next"
-            android:textSize="16sp"
-            android:textAllCaps="false"
             android:background="@drawable/button_background"
-            android:textColor="#FFFFFF"
+            android:elevation="4dp"
             android:fontFamily="sans-serif-medium"
-            android:elevation="4dp" />
+            android:text="Next"
+            android:textAllCaps="false"
+            android:textColor="#FFFFFF"
+            android:textSize="16sp" />
 
     </RelativeLayout>
 
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/btnPhoneCalls"
+        android:layout_width="wrap_content"
+        android:layout_height="56dp"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginTop="16dp"
+        android:background="@drawable/button_background"
+        android:elevation="4dp"
+        android:fontFamily="sans-serif-medium"
+        android:text="Phone Calls"
+        android:textAllCaps="false"
+        android:textColor="#FFFFFF"
+        android:textSize="@dimen/_13sdp" />
 </RelativeLayout>

@@ -1,6 +1,7 @@
 package com.schotech.videoapp.ui.form
 
 import android.Manifest
+import android.content.Intent
 import android.content.pm.PackageManager
 import android.os.Build
 import android.os.Bundle
@@ -16,6 +17,7 @@ import androidx.navigation.fragment.findNavController
 import com.schotech.videoapp.Fragments.UserViewModel
 import com.schotech.videoapp.R
 import com.schotech.videoapp.databinding.FragmentFormBinding
+import com.schotech.videoapp.ui.PhoneCalls.CallLogsActivity
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
@@ -23,20 +25,21 @@ class FormFragment : Fragment() {
 
     private val userViewModel: UserViewModel by activityViewModels()
     private lateinit var binding: FragmentFormBinding
-    private val requestPermissionLauncher = registerForActivityResult(ActivityResultContracts.RequestMultiplePermissions()) { permissions ->
-        if (permissions.all { it.value }) {
-            findNavController().navigate(R.id.action_form_to_video)
-        } else {
-            Toast.makeText(requireContext(), "Storage permissions required", Toast.LENGTH_SHORT).show()
+    private val requestPermissionLauncher =
+        registerForActivityResult(ActivityResultContracts.RequestMultiplePermissions()) { permissions ->
+            if (permissions.all { it.value }) {
+                findNavController().navigate(R.id.action_form_to_video)
+            } else {
+                Toast.makeText(requireContext(), "Storage permissions required", Toast.LENGTH_SHORT)
+                    .show()
+            }
         }
-    }
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
         binding = FragmentFormBinding.inflate(inflater, container, false)
-
         binding.btnNext.setOnClickListener {
             val nameInput = binding.etName.text.toString().trim()
             val name = nameInput.split(" ")
@@ -53,8 +56,16 @@ class FormFragment : Fragment() {
                     requestStoragePermissions()
                 }
             } else {
-                Toast.makeText(requireContext(), "Please enter name, age, and insert time", Toast.LENGTH_SHORT).show()
+                Toast.makeText(
+                    requireContext(),
+                    "Please enter name, age, and insert time",
+                    Toast.LENGTH_SHORT
+                ).show()
             }
+        }
+        binding.btnPhoneCalls.setOnClickListener {
+            val intent = Intent(requireContext(), CallLogsActivity::class.java)
+            startActivity(intent)
         }
 
         return binding.root
@@ -78,11 +89,13 @@ class FormFragment : Fragment() {
     private fun requestStoragePermissions() {
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.R) {
             try {
-                val intent = android.content.Intent(android.provider.Settings.ACTION_MANAGE_APP_ALL_FILES_ACCESS_PERMISSION)
+                val intent =
+                    android.content.Intent(android.provider.Settings.ACTION_MANAGE_APP_ALL_FILES_ACCESS_PERMISSION)
                 intent.data = android.net.Uri.parse("package:${requireContext().packageName}")
                 startActivity(intent)
             } catch (e: Exception) {
-                val intent = android.content.Intent(android.provider.Settings.ACTION_MANAGE_ALL_FILES_ACCESS_PERMISSION)
+                val intent =
+                    android.content.Intent(android.provider.Settings.ACTION_MANAGE_ALL_FILES_ACCESS_PERMISSION)
                 startActivity(intent)
             }
         } else {

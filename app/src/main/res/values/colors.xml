@@ -19,4 +19,5 @@
     <color name="call_dialed">#2196F3</color>
     <color name="call_missed">#F44336</color>
     <color name="call_rejected">#9E9E9E</color>
+
 </resources>
